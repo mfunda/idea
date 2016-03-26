@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @user.first_name %>
+</p>
+
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+</p>
+
+  <strong>Login:</strong>
+  <%= @user.login %>
+</p>
+
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+  <strong>Role:</strong>
+  <%= User::ROLES.invert[@user.role] %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
