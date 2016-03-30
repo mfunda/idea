@@ -4,16 +4,6 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: 
- email: mateuszfundakowski@gmail.com
- role: Admin
-
-two: 
- email: jan@gmail.com
-
-three:
- email: ex@example.com
-
-four:
- email: admin@example.com
- role: Admin
+one:
+  title: Test
+  content: This is example content

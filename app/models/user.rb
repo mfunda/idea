@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  ROLES = { 'Player' => nil, 'Admin' => 'Admin'}
+  ROLES = { 'User' => nil, 'Admin' => 'Admin'}
+
+  has_many :posts, dependent: :destroy
 
   validates :first_name, presence: true, length: { maximum: 255 }
   validates :last_name, presence: true, length: { maximum: 255 }

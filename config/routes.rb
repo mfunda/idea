@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   authenticate :user do
     scope '/admin' do
       resources :users
+      resources :posts
+      resources :categories
       root 'users#index', as: 'admin_root'
     end
   end
