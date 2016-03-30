@@ -2,7 +2,14 @@ class PostsController < AdminDashboardController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @categories = Category.all
+    @posts = Post.all unless params[:search_by_category].present?
+    @posts = @categories.find(params[:search_by_category]).posts if params[:search_by_category].present?
+    @posts = @posts.order(id: params[:order_by]) if params[:order_by].present?
+    if params[:search_by_title].present?
+      keywords = params[:search_by_title] = params[:search_by_title].gsub(',', ' ').squish.split
+      @posts = @posts.where(keywords.map{|k| 'title LIKE \'%' + k + '%\''}.join(' or ') )
+    end
   end
 
   def show

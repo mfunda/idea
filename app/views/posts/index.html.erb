@@ -2,6 +2,14 @@
 
 <h1>Listing Posts</h1>
 
+  <%= form_tag posts_path, :method => 'get' do %>
+    <%= label_tag 'Find Post: ' %>
+    <%= text_field_tag :search_by_title, params[:search_by_title] %>
+    Category: <%= select_tag :search_by_category, options_from_collection_for_select(@categories, :id, :name, params[:search_by_category]), include_blank: true %>
+    Order by: <%= select_tag :order_by, options_for_select([['Lastest', 'desc'], ['Oldest', 'asc']], params[:order_by]), include_blank: true %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
 <table>
   <thead>
     <tr>
