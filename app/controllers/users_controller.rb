@@ -61,6 +61,6 @@ class UsersController < AdminDashboardController
       params[:user][:role] = nil if params[:user].present? and params[:user][:role].blank?
       params[:user][:password] = nil if params[:user].present? and params[:user][:password] == ''
       params[:user][:password_confirmation] = nil if params[:user].present? and params[:user][:password_confirmation] == ''
-      params.require(:user).permit(:first_name, :last_name, :login, :email, :password, :password_confirmation, :role)
+      params.require(:user).permit(:first_name, :last_name, :login, :email, :password, :password_confirmation, :role, :avatar)
     end
 end

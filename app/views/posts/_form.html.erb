@@ -17,11 +17,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="field">
     <%= f.label :category %><br>
       <%= f.select :category_id do %>
        <% @categories.each do |c| %>
@@ -29,6 +24,9 @@
       <% end %>
     <% end %>
   </div>
+
+  <%= f.cktext_area :content, :class => 'someclass', :ckeditor => {:language => 'pl'} %>
+ 
 
   <div class="actions">
     <%= f.submit %>

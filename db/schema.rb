@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330144041) do
+ActiveRecord::Schema.define(version: 20160330204816) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -19,11 +19,27 @@ ActiveRecord::Schema.define(version: 20160330144041) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.string   "title",       limit: 255
-    t.string   "content",     limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.text     "content",     limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id",     limit: 4
     t.integer  "category_id", limit: 4
   end
@@ -45,6 +61,10 @@ ActiveRecord::Schema.define(version: 20160330144041) do
     t.string   "last_name",              limit: 255
     t.string   "login",                  limit: 255
     t.string   "role",                   limit: 255
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
