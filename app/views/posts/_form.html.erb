@@ -23,7 +23,11 @@
 
   <div class="field">
     <%= f.label :category %><br>
-      <%= f.select :category_id, @categories.each{ |c| c.name } %>
+      <%= f.select :category_id do %>
+       <% @categories.each do |c| %>
+        <%= content_tag(:option, c.name, value: c.id) %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="actions">
