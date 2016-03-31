@@ -3,6 +3,11 @@ class UsersController < AdminDashboardController
 
   def index
     @users = User.all
+    @users = @users.where('login LIKE \'%' + params[:search] + '%\' 
+      or first_name LIKE \'%' + params[:search] + '%\' 
+      or last_name LIKE \'%' + params[:search] + '%\'') if params[:search]
+    @users = @users.where(role: params[:role]) if params[:role].present? and params[:role] == 'Admin'
+    @users = @users.where(role: nil) if params[:role].present? and params[:role] == 'User'
   end
 
   def show

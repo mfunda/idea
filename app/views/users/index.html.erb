@@ -2,6 +2,13 @@
 
 <h1>Listing Users</h1>
 
+<%= form_tag users_path, :method => 'get' do %>
+    <%= label_tag 'Find User: ' %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= select_tag :role, options_for_select(['Admin','User'], params[:role]), include_blank: true %>
+    <%= submit_tag "Search" %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -10,18 +17,20 @@
       <th>Login</th>
       <th>Email</th>
       <th>Role</th>
-      <th colspan="3"></th>
+      <th>Posts count</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.login %></td>
-        <td><%= user.email %></td>
-        <td><%= User::ROLES.invert[user.role] %></td>
+        <td align='center'><%= user.first_name %></td>
+        <td align='center'><%= user.last_name %></td>
+        <td align='center'><%= user.login %></td>
+        <td align='center'><%= user.email %></td>
+        <td align='center'><%= User::ROLES.invert[user.role] %></td>
+        <td align='center'><%= user.posts.count %></td>
         <td><%= link_to 'Show', user_path(user) %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
