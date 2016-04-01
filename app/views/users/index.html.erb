@@ -2,6 +2,28 @@
 
 <h1>Listing Users</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th> Total Users </th>
+      <th> This Day </th>
+      <th> This Week </th>
+      <th> This Month </th>
+      <th> This Year </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <td align='center'><%= @users.count %> </td>
+    <td align='center'><%= @users.group_by_day(:created_at, last: 1).count.values %> </td>
+    <td align='center'><%= @users.group_by_week(:created_at, last: 1).count.values %> </td>
+    <td align='center'><%= @users.group_by_month(:created_at, last: 1).count.values %> </td>
+    <td align='center'><%= @users.group_by_year(:created_at, last: 1).count.values %> </td>
+  </tbody>
+</table>
+
+<%= area_chart @users.group_by_period(:day, :created_at).count %>
+
 <%= form_tag users_path, :method => 'get' do %>
     <%= label_tag 'Find User: ' %>
     <%= text_field_tag :search, params[:search] %>
