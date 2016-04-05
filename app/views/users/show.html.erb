@@ -10,18 +10,47 @@
   <strong>Last Name:</strong>
   <%= @user.last_name %>
 </p>
-
+<p>
   <strong>Login:</strong>
   <%= @user.login %>
 </p>
-
+<p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-
+<p>
   <strong>Role:</strong>
   <%= User::ROLES.invert[@user.role] %>
 </p>
+<p>
+  <strong>Sign in count:</strong>
+  <%= @user.sign_in_count %>
+</p>
+<p>
+  <strong>Registration:</strong>
+  <%= @user.created_at %>
+</p>
+<p>
+  <strong>Last visit:</strong>
+  <% if @user.last_sign_in_at.present? %>
+    <%= @user.last_sign_in_at %>
+  <% else %>
+    Never logged in
+  <% end %>
+</p>
+<p>
+  <strong>Last sign in ip:</strong>
+  <%= @user.last_sign_in_ip %>
+</p>
+<p>
+  <strong>Total Posts:</strong>
+  <%= @user.posts.count %> (<%= link_to 'View all posts', user_user_posts_path(@user) %>)
+</p>
+<p>
+  <strong>Total Comments:</strong>
+  <%= @user.comments.count %> (<%= link_to 'View all comments', user_user_comments_path(@user) %>)
+</p>
+
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

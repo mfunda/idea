@@ -13,6 +13,16 @@ class UsersController < AdminDashboardController
   def show
   end
 
+  def user_posts
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
+  end
+
+  def user_comments
+    @user = User.find(params[:user_id])
+    @comments = @user.comments
+  end
+
   def new
     @user = User.new
   end

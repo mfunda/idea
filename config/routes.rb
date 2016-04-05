@@ -4,8 +4,13 @@ Rails.application.routes.draw do
 
   authenticate :user do
     scope '/admin' do
-      resources :users
-      resources :posts
+      resources :users do
+        get '/posts/', to: 'users#user_posts', as: 'user_posts'
+        get '/comments/', to: 'users#user_comments', as: 'user_comments'
+      end
+      resources :posts do
+        resources :comments
+      end
       resources :categories
       root 'users#index', as: 'admin_root'
     end

@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @user.login %>'s comments </h1>
+
+<%= link_to 'Back', :back %> <br/>
+<% if @comments.present? %>
+	<% @comments.each do |p| %>
+	----------------------
+		<p><strong>Content: </strong><%= p.content %></p>
+		<p><strong>Added: </strong><%= p.created_at %></p>
+		<%= link_to 'Destroy', :back, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<br/>
+	<% end %>
+<% else %>
+	<p> This User has no comments </p>
+
+<% end %>
