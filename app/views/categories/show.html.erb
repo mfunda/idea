@@ -4,7 +4,10 @@
   <strong>Title:</strong>
   <%= @category.name %>
 </p>
-
+<p>
+  <strong>Created by:</strong>
+  <%= @category.user.login if @category.user.present? %>
+</p>
 <p>
 	<strong>Posts in this category:</strong>
 	<% @category.posts.each do |post| %>

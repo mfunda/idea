@@ -12,10 +12,10 @@ Rails.application.routes.draw do
         resources :comments
       end
       resources :categories
+      resources :pages
       root 'users#index', as: 'admin_root'
     end
   end
-
   root 'home#index'
 
 end

@@ -4,7 +4,10 @@
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
-
+<p>
+  <strong>Created by:</strong>
+  <%= @post.user.name if @post.user.present? %>
+</p>
 
  <%= raw@post.content %>
 <br/>

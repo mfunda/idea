@@ -25,8 +25,9 @@ gem 'devise', git: 'git://github.com/plataformatec/devise.git'
 gem 'figaro'
 gem 'ckeditor'
 gem 'paperclip'
-gem "chartkick"
+gem 'chartkick'
 gem 'groupdate'
+gem 'friendly_id', '~> 5.1.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
