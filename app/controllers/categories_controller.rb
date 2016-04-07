@@ -3,6 +3,11 @@ class CategoriesController < AdminDashboardController
 
   def index
     @categories = Category.all
+    @categories = @categories.joins('LEFT OUTER JOIN posts ON categories.id = posts.category_id').group('categories.id').order('count(posts.id) ' + params[:order_by]) if params[:order_by].present?
+    if params[:search].present?
+      keywords = params[:search] = params[:search].gsub(',', ' ').squish.split
+      @categories = @categories.where(keywords.map{|k| 'name LIKE \'%' + k + '%\''}.join(' or ') )
+    end
   end
 
   def show

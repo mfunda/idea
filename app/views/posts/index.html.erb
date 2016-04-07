@@ -19,6 +19,7 @@
       <th>Title</th>
       <th>Author</th>
       <th>Category</th>
+      <th>Comment count</th>
       <th colspan="3">Actions</th>
     </tr>
   </thead>
@@ -29,6 +30,7 @@
         <td><%= post.title %></td>
         <td><%= post.user.login if post.user.present? %></td>
         <td><%= post.category.name if post.category.present? %></td>
+        <td align='center'><%= post.comments.count %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

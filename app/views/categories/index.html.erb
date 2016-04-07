@@ -2,6 +2,13 @@
 
 <h1>Listing Categories</h1>
 
+<%= form_tag categories_path, :method => 'get' do %>
+  <%= label_tag 'Find Post: ' %>
+  <%= text_field_tag :search, params[:search] %>
+  Order by posts count: <%= select_tag :order_by, options_for_select([['Descending', 'desc'], ['Ascending', 'asc']], params[:order_by]), include_blank: true %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <table>
   <thead>
     <tr>

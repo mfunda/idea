@@ -6,7 +6,7 @@
 </p>
 <p>
   <strong>Created by:</strong>
-  <%= @post.user.name if @post.user.present? %>
+  <%= @post.user.login if @post.user.present? %>
 </p>
 
  <%= raw@post.content %>
