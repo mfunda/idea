@@ -82,3 +82,13 @@
 #user-img {
 	margin-bottom: 25px;
 }
+
+.nav > li > a:hover, .nav > li > a:focus {
+	background-color: #428bca;
+}
+
+.well {
+	background-color: inherit;
+	border: none;
+	margin-bottom: 0;
+}

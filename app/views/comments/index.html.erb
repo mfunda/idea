@@ -21,6 +21,7 @@
         <th>Post Title</th>
         <th>Comment</th>
         <th>Author</th>
+        <th>Status</th>
         <th>Created at</th>
         <th colspan="4">Actions</th>
       </tr>
@@ -33,12 +34,12 @@
           <td><%= comment.post.title %></td>
           <td><%= comment.content %></td>
           <td><%= comment.user.login %></td>
-          <td><%= comment.created_at %></td>
           <% if comment.approved? %>
             <td><%= link_to 'Disapprove', disapprove_comment_path(comment), style: 'color: red' %></td>
           <% else %>
             <td><%= link_to 'Approve', approve_comment_path(comment), style: 'color: green' %></td>
           <% end %>
+          <td><%= comment.created_at %></td>
           <td><%= link_to 'Show', comment, class: "label label-success", id: 'action-label' %></td>
           <td><%= link_to 'Edit', edit_comment_path(comment), class: "label label-primary", id: 'action-label' %></td>
           <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "label label-danger", id: 'action-label' %></td>

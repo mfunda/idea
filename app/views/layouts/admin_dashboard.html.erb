@@ -22,21 +22,60 @@
       </div>
     </nav>
 	<div class="container-fluid">
-      	<div class="row">
-	        <div class="col-sm-3 col-md-2 sidebar" >
-	          <ul class="nav nav-sidebar">
-	            <li><%= link_to 'Users', users_path %></li>
-	            <li><%= link_to 'Posts', posts_path %></li>
-	            <li><%= link_to 'Comments', comments_path %></li>
-	            <li><%= link_to 'Categories', categories_path %></li>
-	            <li><%= link_to 'Pages', pages_path %></li>
-	          </ul>
-	        </div>
-	        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	      		<%= yield %>
-	      	</div>
+  	<div class="row">
+      <div class="col-sm-3 col-md-2 sidebar" >
+        <ul class="nav nav-sidebar">
+          <li><a data-toggle="collapse" href="#collapseExampleUsers">Users</a></li>
+            <div class="collapse" id="collapseExampleUsers">
+              <div class="well">
+                <ul class="nav nav-sidebar">
+                  <li><%= link_to 'All Users', users_path %></li>
+                  <li><%= link_to 'Add User', new_user_path %></li>
+                </ul>
+              </div>
+            </div>
+          <li><a data-toggle="collapse" href="#collapseExamplePosts">Posts</a></li>
+            <div class="collapse" id="collapseExamplePosts">
+              <div class="well">
+                <ul class="nav nav-sidebar">
+                  <li><%= link_to 'All Posts', posts_path %></li>
+                  <li><%= link_to 'Add Post', new_post_path %></li>
+                </ul>
+              </div>
+            </div>
+          <li><a data-toggle="collapse" href="#collapseExampleComments">Comments</a></li>
+            <div class="collapse" id="collapseExampleComments">
+              <div class="well">
+                <ul class="nav nav-sidebar">
+                  <li><%= link_to 'All Comments', comments_path %></li>
+                </ul>
+              </div>
+            </div>
+          <li><a data-toggle="collapse" href="#collapseExampleCategories">Categories</a></li>
+            <div class="collapse" id="collapseExampleCategories">
+              <div class="well">
+                <ul class="nav nav-sidebar">
+                  <li><%= link_to 'All Categories', categories_path %></li>
+                  <li><%= link_to 'Add Category', new_category_path %></li>
+                </ul>
+              </div>
+            </div>
+          <li><a data-toggle="collapse" href="#collapseExamplePages">Pages</a></li>
+            <div class="collapse" id="collapseExamplePages">
+              <div class="well">
+                <ul class="nav nav-sidebar">
+                  <li><%= link_to 'All Pages', pages_path %></li>
+                  <li><%= link_to 'Add Page', new_page_path %></li>
+                </ul>
+              </div>
+            </div>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    		<%= yield %>
     	</div>
-    </div>
+  	</div>
+  </div>
 
 </body>
 </html>
