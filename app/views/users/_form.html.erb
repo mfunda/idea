@@ -1,4 +1,4 @@
-<%= form_for @user, as: :user, url: user_path(@user) do |f| %>
+<%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -50,8 +50,8 @@
     <%= f.label :role %><br>
     <%= f.select :role, User::ROLES, selected: f.object.role %>
   </div>
-
+  <br/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, :class => "btn btn-default" %>
   </div>
 <% end %>

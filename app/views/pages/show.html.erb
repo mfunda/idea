@@ -1,22 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @page.title %>
-</p>
+<h1 class="page-header"> Title: <%= @page.title %></h1>
+<div class='container theme-showcase'>
+  <div class='jumbotron'>
+		<p>
+		  	<span>
+		  		Added by
+			 	<strong><%= link_to @page.user.login, user_path(@page.user) if @page.user.present? %></strong>
+			  	about
+			 	<%= time_ago_in_words(@page.created_at) %>
+			 	ago
+		 	</span>
+		</p>
+		<%= raw@page.content %>
+		<br/>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @page.slug %>
-</p>
-
-<p>
-  <strong>Created by:</strong>
-  <%= @page.user.login if @page.user.present? %>
-</p>
-
-  <%= raw@page.content %>
-
-
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+		<%= link_to 'Edit', edit_page_path(@page), class: "label label-primary", id: 'action-label' %>
+		<%= link_to 'Back', pages_path, class: "label label-warning", id: 'action-label' %>
+	</div>
+</div>

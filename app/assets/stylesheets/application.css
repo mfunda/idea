@@ -13,3 +13,72 @@
  *= require_tree .
  *= require_self
  */
+.sidebar {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #3f3f3f;
+    border-right: 1px solid #eee;
+}
+
+.main {
+    padding: 20px;
+}
+
+#nav-header {
+	background-color: #313131;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover {
+	background-color: #428bca;
+	color: #fff;
+}
+
+.nav-sidebar > li > a {
+	color: white;
+}
+
+.nav-sidebar > li > a:hover {
+	color: #fff;
+	background-color: #428bca;
+}
+
+.navbar-default .navbar-brand > a:hover {
+	color: #fff;
+}
+#action-label{
+	color: white;
+	text-align: center;
+	font-size: 10px;
+}
+
+.table > thead > tr > th {
+	text-align: center;
+}
+
+.table > tbody > tr > td {
+	text-align: center;
+}
+
+.jumbotron {
+	text-align: center;
+}
+
+.jumbotron p{
+	text-align: left;
+	font-size: 14px;
+	margin-left: 30px;
+}
+
+#user-img {
+	margin-bottom: 25px;
+}

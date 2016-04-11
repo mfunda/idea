@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
+<h1 class="page-header">Category: <%= @category.name %></h1>
+<div class='container theme-showcase'>
+  	<div class='jumbotron'>
+		<p>
+		  	<span>
+		  		Added by
+			 	<strong><%= link_to @category.user.login, user_path(@category.user) if @category.user.present? %></strong>
+			  	about
+			 	<%= time_ago_in_words(@category.created_at) %>
+			 	ago
+		 	</span>
+		</p>
+		<p>
+			<strong>Posts count:</strong> <%= @category.posts.count %>
+		</p>
+		<br/>
 
-<p>
-  <strong>Title:</strong>
-  <%= @category.name %>
-</p>
-<p>
-  <strong>Created by:</strong>
-  <%= @category.user.login if @category.user.present? %>
-</p>
-<p>
-	<strong>Posts in this category:</strong>
-	<% @category.posts.each do |post| %>
-		| <%= link_to post.title, post_path(post.id)%> |
-	<% end %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+		<%= link_to 'Edit', edit_category_path(@category), class: "label label-primary", id: 'action-label' %>
+		<%= link_to 'Back', categories_path, class: "label label-warning", id: 'action-label' %>
+	</div>
+</div>

@@ -1,57 +1,60 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @user.avatar.url(:thumb) %>
+<h1 class="page-header"> <%= @user.login %> Profile </h1>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @user.first_name %>
-</p>
-
-  <strong>Last Name:</strong>
-  <%= @user.last_name %>
-</p>
-<p>
-  <strong>Login:</strong>
-  <%= @user.login %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>Role:</strong>
-  <%= User::ROLES.invert[@user.role] %>
-</p>
-<p>
-  <strong>Sign in count:</strong>
-  <%= @user.sign_in_count %>
-</p>
-<p>
-  <strong>Registration:</strong>
-  <%= @user.created_at %>
-</p>
-<p>
-  <strong>Last visit:</strong>
-  <% if @user.last_sign_in_at.present? %>
-    <%= @user.last_sign_in_at %>
-  <% else %>
-    Never logged in
-  <% end %>
-</p>
-<p>
-  <strong>Last sign in ip:</strong>
-  <%= @user.last_sign_in_ip %>
-</p>
-<p>
-  <strong>Total Posts:</strong>
-  <%= @user.posts.count %> (<%= link_to 'View all posts', user_user_posts_path(@user) %>)
-</p>
-<p>
-  <strong>Total Comments:</strong>
-  <%= @user.comments.count %> (<%= link_to 'View all comments', user_user_comments_path(@user) %>)
-</p>
-
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class='container theme-showcase'>
+  <div class='jumbotron'>
+  <%= image_tag @user.avatar.url(:large), id: "user-img" %>
+    <p>
+      <strong>First Name:</strong>
+      <%= @user.first_name %>
+    </p>
+    <p>
+      <strong>Last Name:</strong>
+      <%= @user.last_name %>
+    </p>
+    <p>
+      <strong>Login:</strong>
+      <%= @user.login %>
+    </p>
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
+    <p>
+      <strong>Role:</strong>
+      <%= User::ROLES.invert[@user.role] %>
+    </p>
+    <p>
+      <strong>Sign in count:</strong>
+      <%= @user.sign_in_count %>
+    </p>
+    <p>
+      <strong>Registration:</strong>
+      <%= @user.created_at %>
+    </p>
+    <p>
+      <strong>Last visit:</strong>
+      <% if @user.last_sign_in_at.present? %>
+        <%= @user.last_sign_in_at %>
+      <% else %>
+        Never logged in
+      <% end %>
+    </p>
+    <p>
+      <strong>Last sign in ip:</strong>
+      <%= @user.last_sign_in_ip %>
+    </p>
+    <p>
+      <strong>Total Posts:</strong>
+      <%= @user.posts.count %> (<%= link_to 'View all posts', user_user_posts_path(@user) %>)
+    </p>
+    <p>
+      <strong>Total Comments:</strong>
+      <%= @user.comments.count %> (<%= link_to 'View all comments', user_user_comments_path(@user) %>)
+    </p>
+    <br/>
+    <%= link_to 'Edit', edit_user_path(@user), class: "label label-primary", id: 'action-label' %>
+    <%= link_to 'Back', users_path, class: "label label-warning", id: 'action-label' %>
+  </div>
+</div>

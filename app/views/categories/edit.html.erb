@@ -1,6 +1,6 @@
-<h1>Editing Category</h1>
+<h1 class="page-header">Edit Category</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Show', @category, class: "label label-success", id: 'action-label' %>
+<%= link_to 'Back', categories_path, class: "label label-warning", id: 'action-label' %>

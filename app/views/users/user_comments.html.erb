@@ -1,15 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @user.login %>'s comments </h1>
+<h1 class="page-header"><%= @user.login %>'s comments</h1>
 
-<%= link_to 'Back', :back %> <br/>
+<%= link_to 'Back', :back, class: "label label-warning", id: 'action-label' %> <br/><br/>
 <% if @comments.present? %>
-	<% @comments.each do |p| %>
-	----------------------
-		<p><strong>Content: </strong><%= p.content %></p>
-		<p><strong>Added: </strong><%= p.created_at %></p>
-		<%= link_to 'Destroy', :back, method: :delete, data: { confirm: 'Are you sure?' } %>
-		<br/>
+	<% @comments.each do |comment| %>
+		<div class='jumbotron'>
+			<p><strong>Content: </strong><%= comment.content %></p>
+			<p><strong>Added: </strong><%= comment.created_at %></p>
+			<%= link_to 'Show', comment_path(comment), class: "label label-success", id: 'action-label' %>
+			<%= link_to 'Destroy', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?'}, class: "label label-danger", id: 'action-label' %>
+			<br/>
+		</div>
 	<% end %>
 <% else %>
 	<p> This User has no comments </p>

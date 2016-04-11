@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <%= f.cktext_area :content, :class => 'someclass', :ckeditor => {:language => 'pl'} %>
-  
+  <%= f.cktext_area :content, :class => 'someclass', :ckeditor => {:language => 'pl', :height => '50rem'} %>
+  <br/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, :class => "btn btn-default" %>
   </div>
 <% end %>

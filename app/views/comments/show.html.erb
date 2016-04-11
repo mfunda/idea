@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @comment.content %>
-</p>
-<p>
-  <strong>Created by:</strong>
-  <%= @comment.user.login if @comment.user.present? %>
-</p>
+<h1 class="page-header">Reply to <%= @comment.post.title %></h1>
+<div class='container theme-showcase'>
+  	<div class='jumbotron'>
+		<p>
+		  	<span>
+		  		Added by
+			 	<strong><%= link_to @comment.user.login, user_path(@comment.user) if @comment.user.present? %></strong>
+			  	about
+			 	<%= time_ago_in_words(@comment.created_at) %>
+			 	ago
+		 	</span>
+		</p>
+		<p>
+			<strong>Content:</strong> <%= @comment.content %>
+		</p>
+		<br/>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comment_path %>
+		<%= link_to 'Edit', edit_comment_path(@comment), class: "label label-primary", id: 'action-label' %>
+		<%= link_to 'Back', comments_path, class: "label label-warning", id: 'action-label' %>
+	</div>
+</div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         get '/comments/', to: 'users#user_comments', as: 'user_comments'
       end
       resources :posts
-      resources :comments
+      resources :comments, except: [:new, :create]
       get '/comments/:id/approve_comment', to: 'comments#approve_comment', as: 'approve_comment'
       get '/comments/:id/disapprove_comment', to: 'comments#disapprove_comment', as: 'disapprove_comment'
       resources :categories

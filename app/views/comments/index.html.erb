@@ -1,48 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Comments</h1>
+<h1 class="page-header">Comments</h1>
 
-<%= form_tag comments_path, :method => 'get' do %>
-  <%= label_tag 'Find Post: ' %>
-  <%= text_field_tag :search, params[:search] %>
-  Order by: <%= select_tag :order_by, options_for_select([['Lastest', 'desc'], ['Oldest', 'asc']], params[:order_by]), include_blank: true %>
-  Show: <%= select_tag :approve, options_for_select([['Approved', 1], ['Disapproved', 0]], params[:approve]), include_blank: 'All' %>
-  <%= submit_tag "Search" %>
+<%= form_tag comments_path, :method => 'get', class: "navbar-form navbar-left" do %>
+  <div class="form-group">
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    <%= label_tag 'Find Comment: ' %>
+    <%= text_field_tag :search, params[:search], class: "form-control" %>
+    <%= select_tag :order_by, options_for_select([['Lastest', 'desc'], ['Oldest', 'asc']], params[:order_by]), include_blank: 'Order by', class: "btn btn-default dropdown-toggle"  %>
+    <%= select_tag :approve, options_for_select([['Approved', 1], ['Disapproved', 0]], params[:approve]), include_blank: 'All', class: "btn btn-default dropdown-toggle"  %>
+  </div>
+  <%= submit_tag "Search", class: "btn btn-default" %>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID </th>
-      <th>Post Title</th>
-      <th>Comment</th>
-      <th>Author</th>
-      <th>Date</th>
-      <th colspan="4">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= comment.id %></td>
-        <td><%= comment.post.title %></td>
-        <td><%= comment.content %></td>
-        <td><%= comment.user.login %></td>
-        <td><%= comment.created_at %></td>
-        <% if comment.approved? %>
-          <td><%= link_to 'Disapprove', disapprove_comment_path(comment), style: 'color: red' %></td>
-        <% else %>
-          <td><%= link_to 'Approve', approve_comment_path(comment), style: 'color: green' %></td>
-        <% end %>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>ID </th>
+        <th>Post Title</th>
+        <th>Comment</th>
+        <th>Author</th>
+        <th>Created at</th>
+        <th colspan="4">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.id %></td>
+          <td><%= comment.post.title %></td>
+          <td><%= comment.content %></td>
+          <td><%= comment.user.login %></td>
+          <td><%= comment.created_at %></td>
+          <% if comment.approved? %>
+            <td><%= link_to 'Disapprove', disapprove_comment_path(comment), style: 'color: red' %></td>
+          <% else %>
+            <td><%= link_to 'Approve', approve_comment_path(comment), style: 'color: green' %></td>
+          <% end %>
+          <td><%= link_to 'Show', comment, class: "label label-success", id: 'action-label' %></td>
+          <td><%= link_to 'Edit', edit_comment_path(comment), class: "label label-primary", id: 'action-label' %></td>
+          <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "label label-danger", id: 'action-label' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
