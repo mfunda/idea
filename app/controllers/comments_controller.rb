@@ -13,6 +13,7 @@ class CommentsController < AdminDashboardController
       @comments = @comments.uniq.sort_by {|c| c.id}.reverse if params[:order_by].present? and params[:order_by] == 'desc'
       @comments = @comments.uniq.sort_by {|c| c.id} unless params[:order_by].present? and params[:order_by] == 'desc'
     end
+    @comments = @comments.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

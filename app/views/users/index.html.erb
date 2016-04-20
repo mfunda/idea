@@ -67,6 +67,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to 'New User', new_user_path, class: "label label-info", id: 'action-label' %>
+  <%= will_paginate @users, next_label: '»', previous_label: '«' %>
 </div>
-<br>
+<br/>
+<%= link_to 'New User', new_user_path, class: "label label-info", id: 'action-label' %>

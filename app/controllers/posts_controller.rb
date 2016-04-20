@@ -10,6 +10,7 @@ class PostsController < AdminDashboardController
       keywords = params[:search_by_title] = params[:search_by_title].gsub(',', ' ').squish.split
       @posts = @posts.where(keywords.map{|k| 'title LIKE \'%' + k + '%\''}.join(' or ') )
     end
+    @posts = @posts.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

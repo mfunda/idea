@@ -8,6 +8,7 @@ class CategoriesController < AdminDashboardController
       keywords = params[:search] = params[:search].gsub(',', ' ').squish.split
       @categories = @categories.where(keywords.map{|k| 'name LIKE \'%' + k + '%\''}.join(' or ') )
     end
+    @categories = @categories.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

@@ -2,7 +2,7 @@ class PagesController < AdminDashboardController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pages = Page.all
+    @pages = Page.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

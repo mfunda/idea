@@ -8,6 +8,7 @@ class UsersController < AdminDashboardController
       or last_name LIKE \'%' + params[:search] + '%\'') if params[:search]
     @users = @users.where(role: params[:role]) if params[:role].present? and params[:role] == 'Admin'
     @users = @users.where(role: nil) if params[:role].present? and params[:role] == 'User'
+    @users = @users.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
