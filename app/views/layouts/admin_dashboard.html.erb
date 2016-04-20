@@ -25,12 +25,23 @@
   	<div class="row">
       <div class="col-sm-3 col-md-2 sidebar" >
         <ul class="nav nav-sidebar">
+          <li><%= link_to 'Dashboard', admin_root_path %></li>
           <li><a data-toggle="collapse" href="#collapseExampleUsers">Users</a></li>
             <div class="collapse" id="collapseExampleUsers">
               <div class="well">
                 <ul class="nav nav-sidebar">
-                  <li><%= link_to 'All Users', users_path %></li>
-                  <li><%= link_to 'Add User', new_user_path %></li>
+                  <li>
+                    <%= link_to users_path do %>
+                      <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                      All Users
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_user_path do %>
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                      Add User
+                    <% end %>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -38,8 +49,18 @@
             <div class="collapse" id="collapseExamplePosts">
               <div class="well">
                 <ul class="nav nav-sidebar">
-                  <li><%= link_to 'All Posts', posts_path %></li>
-                  <li><%= link_to 'Add Post', new_post_path %></li>
+                  <li>
+                    <%= link_to posts_path do %>
+                      <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                      All Posts
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_post_path do %>
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                      Add Post
+                    <% end %>
+                    </li>
                 </ul>
               </div>
             </div>
@@ -47,7 +68,12 @@
             <div class="collapse" id="collapseExampleComments">
               <div class="well">
                 <ul class="nav nav-sidebar">
-                  <li><%= link_to 'All Comments', comments_path %></li>
+                  <li>
+                    <%= link_to comments_path do %>
+                      <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                      All Comments
+                    <% end %>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -55,8 +81,18 @@
             <div class="collapse" id="collapseExampleCategories">
               <div class="well">
                 <ul class="nav nav-sidebar">
-                  <li><%= link_to 'All Categories', categories_path %></li>
-                  <li><%= link_to 'Add Category', new_category_path %></li>
+                  <li>
+                    <%= link_to categories_path do %>
+                      <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                      All Categories
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_category_path do %>
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                      Add Category
+                    <% end %>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -64,8 +100,18 @@
             <div class="collapse" id="collapseExamplePages">
               <div class="well">
                 <ul class="nav nav-sidebar">
-                  <li><%= link_to 'All Pages', pages_path %></li>
-                  <li><%= link_to 'Add Page', new_page_path %></li>
+                  <li>
+                  <%= link_to pages_path do %>
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                    All Pages
+                  <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_page_path do %>
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                      Add Page
+                    <% end %>
+                  </li>
                 </ul>
               </div>
             </div>

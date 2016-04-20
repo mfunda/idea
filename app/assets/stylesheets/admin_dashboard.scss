@@ -1,3 +1,41 @@
 // Place all the styles related to the AdminDashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.summary-1 {
+	background-color: #5cb85c;
+}
+
+.summary-2 {
+	background-color: #5bc0de;
+}
+
+.summary-3 {
+	background-color: #f0ad4e;
+}
+
+.summary-4 {
+	background-color: #d9534f;
+}
+
+.summary-5 {
+	background-color: #337ab7;
+}
+
+
+.sum-td {
+	background-color: lighten(#337ab7, 33.7%);
+}
+
+.user-info {
+	border: 1px solid lighten(#337ab7, 22.5%);
+	padding: 30px;
+	padding-top: 10px;
+	border-radius: 20px;
+}
+
+.img-circle{
+	height: 10rem;
+	width: 10rem;
+	margin: 10px;
+}

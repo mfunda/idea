@@ -1,0 +1,106 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Dashboard</h1>
+
+<div class='container theme-showcase'>
+  <div class='jumbotron'>
+  	<div class='row'>
+  		<div class="col-sm-12">
+  			<h2>New Users</h2>
+  			<br/>
+  			<%= area_chart @users.group_by_period(:day, :created_at).count %>
+  		</div>
+		  	<div class='col-md-12'>
+		  		<h2>Summary</h2>
+		  		<br/>
+		  		<div class="table-responsive">
+					<table class="table">
+				    	<thead>
+					      <tr>
+					        <th class="summary-5">Users</th>
+					        <th class="summary-2">Pages</th>
+					        <th class="summary-5">Posts</th>
+					        <th class="summary-2">Categories</th>
+					        <th class="summary-5">Comments</th>
+					      </tr>
+		    			</thead>
+		    			<tbody class='sum-td'>
+		    				<td class=""><%= @users.count %></td>
+		    				<td class=""><%= @pages.count %></td>
+		    				<td class=""><%= @posts.count %></td>
+		    				<td class=""><%= @categories.count %></td>
+		    				<td class=""><%= @comments.count %></td>
+		    			</tbody>
+	    			</table>
+	    		</div>
+		  	</div>
+
+	  	<div class='row'>
+	  		<div class='col-md-6'>
+				<h3>Last Activity (Posts)</h3>
+				<br/><br/>
+				<div class="table-responsive">
+					<table class="table">
+				    	<thead>
+					    	<tr>
+						      <th>Title</th>
+						      <th>Author</th>
+						      <th>Created</th>
+					    	</tr>
+					    </thead>
+					    <tbody>
+					    	<% @last_posts.each do |p| %>
+						    	<tr>
+								    <td><%= link_to p.title, post_path(p) %></td>
+								    <td><%= p.user.login if p.user.present? %></td>
+								    <td><%= p.created_at %></td>
+								</tr>
+							<% end %>
+					    </tbody>
+				    </table>
+			    </div>
+		  	</div>
+		  	<div class='col-md-6'>
+				<h3>Posts in each Categories</h3>
+				<%= pie_chart @posts.group(:category_id).count.map{ |k, v| [ @categories.find(k).name, v ] } %>
+		  	</div>
+		  	<div class='col-md-6'>
+				<h3>Most responded</h3>
+		  		<%= bar_chart @comments.group(:post_id).count.map{ |k, v| [ @posts.find(k).title, v ] } %>
+		  	</div>
+		  	<div class='col-md-6'>
+				<h3>Last Activity (Comments)</h3>
+				<br/><br/>
+				<div class="table-responsive">
+					<table class="table">
+				    	<thead>
+					    	<tr>
+					    	  <th>Post</th>
+						      <th>Title</th>
+						      <th>Author</th>
+						      <th>Approved</th>
+						      <th>Created</th>
+					    	</tr>
+					    </thead>
+					    <tbody>
+					    	<% @last_comments.each do |comment| %>
+						    	<tr>
+						    		<td><%= link_to comment.post.title, post_path(comment) %></td>
+								    <td><%= link_to comment.content, comment_path(comment) %></td>
+								    <td><%= comment.user.login if comment.user.present? %></td>
+								    <% if comment.approved? %>
+							        	<td style='color: green'>Approved</td>
+							        <% else %>
+							            <td style='color: red'>Disapproved</td>
+							        <% end %>
+								    <td><%= comment.created_at %></td>
+								</tr>
+							<% end %>
+					    </tbody>
+				    </table>
+			    </div>
+		  	</div>
+	  	</div>
+  	</div>
+  </div>
+</div>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get '/comments/:id/disapprove_comment', to: 'comments#disapprove_comment', as: 'disapprove_comment'
       resources :categories
       resources :pages
-      root 'users#index', as: 'admin_root'
+      root 'admin_dashboard#index', as: 'admin_root'
     end
   end
   root 'home#index'
