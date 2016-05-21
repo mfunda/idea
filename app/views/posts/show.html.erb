@@ -3,6 +3,8 @@
 <h1 class="page-header"> Title: <%= @post.title %></h1>
 <div class='container theme-showcase'>
   <div class='jumbotron'>
+  	<%= image_tag @post.image.url(:large) %>
+  	<p><%= @post.description %></p>
 		<p>
 		  	<span>
 		  		Added by

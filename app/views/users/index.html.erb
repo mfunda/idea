@@ -41,10 +41,9 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Login</th>
-        <th>Email</th>
         <th>Role</th>
-        <th>Posts count</th>
-        <th>Comments count</th>
+        <th class='th-numbers'>Posts count</th>
+        <th class='th-numbers'>Comments count</th>
         <th colspan="3">Actions</th>
       </tr>
     </thead>
@@ -56,7 +55,6 @@
           <td><%= user.first_name %></td>
           <td><%= user.last_name %></td>
           <td><%= user.login %></td>
-          <td><%= user.email %></td>
           <td><%= User::ROLES.invert[user.role] %></td>
           <td><%= user.posts.count %></td>
           <td><%= user.comments.count %></td>

@@ -95,14 +95,9 @@
 		cursor: not-allowed;
 	}
 }
-td-content {
-	length: 2px;
-	margin: 0;
-	word-wrap: break-word;
-}
 
 tbody tr td {
-  	max-width: 1rem;
+  	max-width: 2rem;
   	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -110,4 +105,14 @@ tbody tr td {
 
 .jumbotron > p {
 	word-break: break-all;
+}
+
+.th-numbers {
+	max-width: 5rem;
+}
+
+.img-rounded {
+	width: 250px;
+	height: 250px;
+	margin-bottom: 30px;
 }

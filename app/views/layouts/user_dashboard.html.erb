@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NewIdea | User Dashboard</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" id='nav-header'>
+      <div class="container-fluid">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'Profile', edit_user_path(current_user) %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class='container'>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </div>
+</body>
+</html>

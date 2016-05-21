@@ -92,3 +92,9 @@
 	border: none;
 	margin-bottom: 0;
 }
+
+.carousel img {
+	width: 100%;
+	height: 20%;
+}
+

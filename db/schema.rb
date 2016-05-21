@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406112013) do
+ActiveRecord::Schema.define(version: 20160421131103) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 20160406112013) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "name_file_name",    limit: 255
+    t.string   "name_content_type", limit: 255
+    t.integer  "name_file_size",    limit: 4
+    t.datetime "name_updated_at"
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.string   "slug",       limit: 255
@@ -73,12 +82,17 @@ ActiveRecord::Schema.define(version: 20160406112013) do
   add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "content",     limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "user_id",     limit: 4
-    t.integer  "category_id", limit: 4
+    t.string   "title",              limit: 255
+    t.text     "content",            limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "user_id",            limit: 4
+    t.integer  "category_id",        limit: 4
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.text     "description",        limit: 65535
   end
 
   create_table "users", force: :cascade do |t|

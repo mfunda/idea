@@ -115,6 +115,25 @@
                 </ul>
               </div>
             </div>
+          <li><a data-toggle="collapse" href="#collapseExampleImages">Images</a></li>
+            <div class="collapse" id="collapseExampleImages">
+              <div class="well">
+                <ul class="nav nav-sidebar">
+                  <li>
+                  <%= link_to images_path do %>
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                    All Images
+                  <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_image_path do %>
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                      Add Image
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :images
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
-
+  root 'home#index'
   authenticate :user do
+    
     scope '/admin' do
       resources :users do
         get '/posts/', to: 'users#user_posts', as: 'user_posts'
@@ -16,7 +18,11 @@ Rails.application.routes.draw do
       resources :pages
       root 'admin_dashboard#index', as: 'admin_root'
     end
+
+    scope 'profile' do
+      root 'user_dashboard#index', as: 'user_root'
+    end
+
   end
-  root 'home#index'
 
 end

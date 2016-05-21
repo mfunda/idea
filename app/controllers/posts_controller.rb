@@ -65,6 +65,6 @@ class PostsController < AdminDashboardController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, :user_id, :category_id)
+      params.require(:post).permit(:title, :content, :user_id, :category_id, :image, :description)
     end
 end

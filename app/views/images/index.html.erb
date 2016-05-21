@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class='page-header'>Images</h1>
+<div class='row'>
+  <% @images.each do |image| %>
+    <div class='col-md-3'>
+        <%= link_to (image_tag image.name.url(:thumb), class: 'img-rounded'), image %>
+    </div>
+  <% end %>
+</div>
+<br>
+
+<%= link_to 'Add Image', new_image_path, class: "label label-info", id: 'action-label' %>

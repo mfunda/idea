@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<div class='container theme-showcase' align="center">
+	<%= image_tag @image.name.url(:large) %>
+</div>
+
+<%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' }, class: "label label-danger", id: 'action-label' %>
+<%= link_to 'Edit', edit_image_path(@image), class: "label label-primary", id: 'action-label' %>
+<%= link_to 'Back', images_path, class: "label label-warning", id: 'action-label' %>

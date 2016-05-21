@@ -52,7 +52,7 @@
 					    	<% @last_posts.each do |p| %>
 						    	<tr>
 								    <td><%= link_to p.title, post_path(p) %></td>
-								    <td><%= p.user.login if p.user.present? %></td>
+								    <td><%= link_to p.user.login, user_path(p.user) if p.user.present? %></td>
 								    <td><%= p.created_at %></td>
 								</tr>
 							<% end %>
@@ -78,7 +78,6 @@
 					    	  <th>Post</th>
 						      <th>Title</th>
 						      <th>Author</th>
-						      <th>Approved</th>
 						      <th>Created</th>
 					    	</tr>
 					    </thead>
@@ -87,12 +86,7 @@
 						    	<tr>
 						    		<td><%= link_to comment.post.title, post_path(comment) %></td>
 								    <td><%= link_to comment.content, comment_path(comment) %></td>
-								    <td><%= comment.user.login if comment.user.present? %></td>
-								    <% if comment.approved? %>
-							        	<td style='color: green'>Approved</td>
-							        <% else %>
-							            <td style='color: red'>Disapproved</td>
-							        <% end %>
+								    <td><%= link_to comment.user.login, user_path(comment.user) if comment.user.present? %></td>
 								    <td><%= comment.created_at %></td>
 								</tr>
 							<% end %>
