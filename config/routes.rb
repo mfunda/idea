@@ -19,10 +19,13 @@ Rails.application.routes.draw do
       root 'admin_dashboard#index', as: 'admin_root'
     end
 
-    scope 'profile' do
-      root 'user_dashboard#index', as: 'user_root'
-    end
-
+    get '/profile', to: 'user_dashboard#index', as: 'user_dashboard'
   end
+
+  get '', to: 'home#index', as: 'home'
+  get '/post/:id', to: 'home#show_post', as: 'show_post'
+  get '/:id', to: 'home#show_page', as: 'show_page'
+  get '/user/:id', to: 'home#show_user_profile', as: 'show_user_profile'
+  get '/category/:id', to: 'home#show_category', as: 'show_category'
 
 end
