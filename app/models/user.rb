@@ -20,9 +20,10 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { large: "550x450>", medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-
   before_validation :downcase_email
   self.inheritance_column = :role
+
+  acts_as_messageable
 
   private
 
@@ -30,4 +31,7 @@ class User < ActiveRecord::Base
 	  	self.email = self.email.try(:downcase)
 	  end
 
+    def mailboxer_email(object)
+      email
+    end
 end

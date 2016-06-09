@@ -20,6 +20,17 @@ Rails.application.routes.draw do
     end
 
     get '/profile', to: 'user_dashboard#index', as: 'user_dashboard'
+    resources :conversations, only: [:index, :show, :destroy] do
+      member do
+        post :reply
+        post :restore
+        post :mark_as_read
+      end
+      collection do
+        delete :empty_trash
+      end
+    end
+    resources :messages, only: [:new, :create]
   end
 
   get '', to: 'home#index', as: 'home'
