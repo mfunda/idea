@@ -23,6 +23,7 @@
       <%= raw post.content %>
     </div>
     <% end %>  
+    <%= will_paginate @posts, next_label: '»', previous_label: '«' %>
     </div>
     <div class="col-xs-4 col-md-2">
       <div class="sidebar-module">

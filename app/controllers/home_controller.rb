@@ -2,8 +2,7 @@ class HomeController < ApplicationController
 
 
 	def index
-		@posts = Post.all
-		@posts = @posts.sort_by{|post| post.id}.reverse
+		@posts = Post.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
 		@pages = Page.all
 		@categories = Category.all
 	end
