@@ -16,6 +16,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'User Dashboard', user_dashboard_path %></li>
+            <li><%= link_to 'Mailbox', conversations_path %></li>
             <li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
           </ul>

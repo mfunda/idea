@@ -96,13 +96,6 @@
 	}
 }
 
-tbody tr td {
-  	max-width: 2rem;
-  	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
 .jumbotron > p {
 	word-break: break-all;
 }
@@ -115,4 +108,13 @@ tbody tr td {
 	width: 250px;
 	height: 250px;
 	margin-bottom: 30px;
+}
+
+.sum-tbody {
+	td {
+	  	max-width: 2rem;
+	  	white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 }

@@ -25,11 +25,13 @@
 					      </tr>
 		    			</thead>
 		    			<tbody class='sum-td'>
-		    				<td class=""><%= @users.count %></td>
-		    				<td class=""><%= @pages.count %></td>
-		    				<td class=""><%= @posts.count %></td>
-		    				<td class=""><%= @categories.count %></td>
-		    				<td class=""><%= @comments.count %></td>
+		    				<tr>
+			    				<td><%= @users.count %></td>
+			    				<td><%= @pages.count %></td>
+			    				<td><%= @posts.count %></td>
+			    				<td><%= @categories.count %></td>
+			    				<td><%= @comments.count %></td>
+		    				</tr>
 		    			</tbody>
 	    			</table>
 	    		</div>
@@ -48,7 +50,7 @@
 						      <th>Created</th>
 					    	</tr>
 					    </thead>
-					    <tbody>
+					    <tbody class='sum-tbody'>
 					    	<% @last_posts.each do |p| %>
 						    	<tr>
 								    <td><%= link_to p.title, post_path(p) %></td>
@@ -81,7 +83,7 @@
 						      <th>Created</th>
 					    	</tr>
 					    </thead>
-					    <tbody>
+					    <tbody class='sum-tbody'>
 					    	<% @last_comments.each do |comment| %>
 						    	<tr>
 						    		<td><%= link_to comment.post.title, post_path(comment) %></td>

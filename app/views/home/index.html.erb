@@ -4,16 +4,13 @@
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <p><%= link_to 'Sign up !', new_user_registration_path, class: "btn btn-lg btn-success", role: "button" %></p>
     </div>
-    <nav class="navbar navbar-default" id='nav-header'>
-      <div class="container-fluid">
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav" >
-              <% @pages.each do |page| %>
-                <li><%= link_to page.title, show_page_path(page) %></li>
-              <% end %>
-            </ul>
-          </div>
-      </div>
+    <nav>
+          <ul class="nav nav-justified">
+            <% @pages.each do |page| %>
+              <li><%= link_to page.title, show_page_path(page), class: 'mid' %></li>
+            <% end %>
+          </ul>
+
   </nav>
 
   <div class='row'>

@@ -6,14 +6,13 @@
 				<div class="thumbnail">
 					<%= image_tag post.image.url(:large) %>
 					<div class="caption">
-						<h3><%= post.title %></h3>
+						<h3><%= link_to post.title, show_post_path(post) %></h3>
 						<p><%= post.description %></p>
-						<%= link_to 'Show', show_post_path(post), class: 'btn btn-primary', role: 'button' %>
 					</div>
 				</div>
 			</div>
 		<% end %>
 	</div>
-	<%= link_to 'Back', :back, class: "label label-warning", id: 'action-label' %>
+	<%= link_to 'Back', :back, class: "label label-warning back-button", id: 'action-label' %>
 	<br />
 </div>
