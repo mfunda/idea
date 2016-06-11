@@ -118,3 +118,51 @@
 		text-overflow: ellipsis;
 	}
 }
+
+#forum-post-summary {
+	border: 1px solid #a1a1a1;
+	text-align: center;
+	background-color: #f5f5f5;
+	padding: 0;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+	img {
+		height: 2rem;
+		width: 2rem;
+		border-radius: 360px;
+	}
+	p {
+		font-size: 0.9rem;
+		margin: 0;
+	}
+	#replies-numbers{
+		font-size: 3.5rem;
+		line-height: 3.7rem;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.reply-content{
+	border-top: 1px solid #999;
+	padding-top: 20px;
+}
+.reply-user {
+	float: left;
+}
+
+.reply-time {
+	float: right;
+}
+
+.reply-text {
+	margin-left: 0;
+	padding: 0;
+	clear: both;
+	margin-top: 5rem;
+}
+.media-object {
+	border-radius: 360px;
+	height: 6rem;
+	width: 6rem;
+}

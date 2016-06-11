@@ -1,0 +1,18 @@
+<h1 class="page-header"> Reply to: <%= link_to @forum_reply.forum_post.title, forum_post_path(@forum_reply.forum_post) %></h1>
+<div class='container theme-showcase'>
+  	<div class='jumbotron'>
+		<p>
+		  	<span>
+		  		Added by
+			 	<strong><%= link_to @forum_reply.user.login, user_path(@forum_reply.user) if @forum_reply.user.present? %></strong>
+			 	<%= time_ago_in_words(@forum_reply.created_at) %>
+			 	ago
+		 	</span>
+		</p>
+			<%= raw@forum_reply.content %>
+		<br/>
+
+		<%= link_to 'Edit', edit_forum_reply_path(@forum_reply), class: "label label-primary", id: 'action-label' %>
+		<%= link_to 'Back', forum_replies_path, class: "label label-warning", id: 'action-label' %>
+	</div>
+</div>

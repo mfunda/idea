@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :forum_replies
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   root 'home#index'

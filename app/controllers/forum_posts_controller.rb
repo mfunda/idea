@@ -2,10 +2,11 @@ class ForumPostsController < AdminDashboardController
   before_action :set_forum_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @forum_posts = ForumPost.paginate(:page => params[:page], :per_page => 10)
+    @forum_posts = ForumPost.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
+    @forum_replies = @forum_post.forum_replies
   end
 
   def new

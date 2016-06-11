@@ -1,0 +1,16 @@
+<% @forum_replies.each do |reply| %>
+<div class='reply-content'>
+	<div class='row'>
+		<div class='col-md-1'>
+			<%= image_tag reply.user.avatar.url(:thumb), class: 'media-object'%>
+		</div>
+		<div class='col-md-11'>
+			<span class='reply-user'><strong><%= link_to reply.user.login, user_path(reply.user) %></strong></span>
+			<span class='reply-time'>About <%= time_ago_in_words(reply.created_at) %> ago</span>
+			<div class='reply-text'>
+				<%= raw reply.content %>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
