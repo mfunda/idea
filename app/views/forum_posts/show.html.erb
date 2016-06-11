@@ -1,0 +1,19 @@
+<h1 class="page-header"> Title: <%= @forum_post.title %></h1>
+<div class='container theme-showcase'>
+  	<div class='jumbotron'>
+		<p>
+		  	<span>
+		  		Added by
+			 	<strong><%= link_to @forum_post.user.login, user_path(@forum_post.user) if @forum_post.user.present? %></strong>
+			  	about
+			 	<%= time_ago_in_words(@forum_post.created_at) %>
+			 	ago
+		 	</span>
+		</p>
+			<%= raw@forum_post.content %>
+		<br/>
+
+		<%= link_to 'Edit', edit_forum_post_path(@forum_post), class: "label label-primary", id: 'action-label' %>
+		<%= link_to 'Back', forum_posts_path, class: "label label-warning", id: 'action-label' %>
+	</div>
+</div>

@@ -1,4 +1,5 @@
 <div class="container">
+  <div class='col-md-6 col-md-offset-3'>
     <h2 class="form-signin-heading" align='center'>Please sign in</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.label :email, class: 'sr-only' %><br />
@@ -19,4 +20,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
 </div>

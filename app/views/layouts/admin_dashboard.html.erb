@@ -136,14 +136,28 @@
                 </ul>
               </div>
             </div>
+            <li><a data-toggle="collapse" href="#collapseExampleForum">Forum</a></li>
+            <div class="collapse" id="collapseExampleForum">
+              <div class="well">
+                <ul class="nav nav-sidebar">
+                  <li>
+                    <%= link_to forum_posts_path do %>
+                      <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                      Posts
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to '#' do %>
+                      <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                      Categories
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>">
-            <%= value %>
-          </div>
-        <% end %>
     		<%= yield %>
     	</div>
   	</div>

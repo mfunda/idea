@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :pages
       resources :images
+      resources :forum_posts
       root 'admin_dashboard#index', as: 'admin_root'
     end
 

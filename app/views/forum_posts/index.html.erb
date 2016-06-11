@@ -1,0 +1,33 @@
+<h1 class="page-header">Forum Posts</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Created at</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forum_posts.each do |forum_post| %>
+      <tr>
+        <td><%= forum_post.id %></td>
+        <td><%= forum_post.title %></td>
+        <td><%= forum_post.user.login %></td>
+        <td><%= forum_post.created_at %></td>
+        <td><%= link_to 'Show', forum_post, class: "label label-success", id: 'action-label' %></td>
+        <td><%= link_to 'Edit', edit_forum_post_path(forum_post), class: "label label-primary", id: 'action-label' %></td>
+        <td><%= link_to 'Destroy', forum_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "label label-danger", id: 'action-label' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @forum_posts, next_label: '»', previous_label: '«' %>
+</div>
+<br>
+
+<%= link_to 'New Forum post', new_forum_post_path, class: "label label-info", id: 'action-label' %>
