@@ -1,0 +1,13 @@
+<div class='container'>
+	<h2 class='page-header'><%= @user.login %> profile</h2>
+	<%= image_tag @user.avatar.url(:medium), class: "img-thumbnail" %>
+	<br/>
+	<p><strong>First Name: </strong><%= @user.first_name %></p>
+	<p><strong>Last Name: </strong><%= @user.last_name %></p>
+	<p><strong>Login: </strong><%= @user.login %></p>
+	<p><strong>Email: </strong><%= @user.email %></p>
+	<p><strong>Comments count: </strong><%= @user.comments.count if @user.comments.present? %></p>
+	<p><strong>Last visit: </strong><%= @user.last_sign_in_at %></p>
+
+	<%= link_to 'Back', :back, class: "label label-warning", id: 'action-label' %>
+</div>

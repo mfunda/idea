@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :images
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   root 'home#index'
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
       get '/comments/:id/disapprove_comment', to: 'comments#disapprove_comment', as: 'disapprove_comment'
       resources :categories
       resources :pages
+      resources :images
       root 'admin_dashboard#index', as: 'admin_root'
     end
 
