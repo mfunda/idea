@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611201305) do
+ActiveRecord::Schema.define(version: 20160611232707) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -48,13 +48,27 @@ ActiveRecord::Schema.define(version: 20160611201305) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "forum_posts", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "forum_categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  add_index "forum_categories", ["user_id"], name: "index_forum_categories_on_user_id", using: :btree
+
+  create_table "forum_posts", force: :cascade do |t|
+    t.string   "title",                limit: 255
+    t.text     "content",              limit: 65535
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "user_id",              limit: 4
+    t.integer  "forum_category_id_id", limit: 4
+    t.integer  "forum_category_id",    limit: 4
+  end
+
+  add_index "forum_posts", ["forum_category_id"], name: "index_forum_posts_on_forum_category_id", using: :btree
+  add_index "forum_posts", ["forum_category_id_id"], name: "index_forum_posts_on_forum_category_id_id", using: :btree
 
   create_table "forum_replies", force: :cascade do |t|
     t.text     "content",       limit: 65535
@@ -194,6 +208,7 @@ ActiveRecord::Schema.define(version: 20160611201305) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "forum_posts", "forum_categories"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"

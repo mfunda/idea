@@ -1,4 +1,4 @@
-<h1 class="page-header"> Title: <%= @forum_post.title %></h1>
+<h1 class="page-header"> Title: <%= @forum_post.title %><p><strong>Category: </strong><%= link_to @forum_post.forum_category.name, forum_category_path(@forum_post.forum_category) %></p></h1>
 <div class='container theme-showcase'>
 	<div class='forum-post'>
 		<div class='row'>
@@ -22,8 +22,12 @@
 				</div>
 				<div class='col-md-3'>
 					<p>last reply</p>
-					<%= link_to (image_tag @forum_post.forum_replies.last.user.avatar.url(:thumb)), user_path(@forum_post.forum_replies.last.user), title: @forum_post.user.login %>
-					<p><%= time_ago_in_words(@forum_post.forum_replies.last.created_at) %></p>
+					<% if @forum_post.forum_replies.present? %>
+						<%= link_to (image_tag @forum_post.forum_replies.last.user.avatar.url(:thumb)), user_path(@forum_post.forum_replies.last.user), title: @forum_post.user.login %>
+						<p><%= time_ago_in_words(@forum_post.forum_replies.last.created_at) %></p>
+					<% else %>
+						<p id='replies-numbers'>no replies</p>
+					<% end %>
 				</div>
 				<div class='col-md-3'>
 					<p id='replies-numbers'><%= @forum_replies.count %></p>

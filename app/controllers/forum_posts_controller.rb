@@ -11,9 +11,11 @@ class ForumPostsController < AdminDashboardController
 
   def new
     @forum_post = ForumPost.new
+    @forum_categories = ForumCategory.all
   end
 
   def edit
+    @forum_categories = ForumCategory.all
   end
 
   def create
@@ -56,6 +58,6 @@ class ForumPostsController < AdminDashboardController
     end
 
     def forum_post_params
-      params.require(:forum_post).permit(:title, :content, :user_id)
+      params.require(:forum_post).permit(:title, :content, :user_id, :forum_category_id)
     end
 end

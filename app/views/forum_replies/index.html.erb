@@ -6,6 +6,7 @@
       <tr>
         <th>ID</th>
         <th>Post Title</th>
+        <th>Post Category</th>
         <th>Content</th>
         <th>Author</th>
         <th>Created at</th>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= forum_reply.id %></td>
         <td><%= forum_reply.forum_post.title %></td>
+        <td><%= forum_reply.forum_post.forum_category.name %></td>
         <td><%= forum_reply.content %></td>
         <td><%= forum_reply.user.login %></td>
         <td><%= forum_reply.created_at %></td>

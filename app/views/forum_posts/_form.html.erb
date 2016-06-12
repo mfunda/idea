@@ -14,6 +14,12 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
+  <div class="field">
+    <%= f.label :forum_category %>
+    <%= f.select :forum_category_id do %>
+      <%= options_from_collection_for_select(@forum_categories, :id, :name) %>
+    <% end %>
+  </div>
   <%= f.cktext_area :content, :class => 'someclass', :ckeditor => {:language => 'pl', :height => '50rem'} %>
   <br/>
   <div class="actions">

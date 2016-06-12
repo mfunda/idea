@@ -1,0 +1,44 @@
+<h1 class="page-header">Forum Category: <%= @forum_category.name %></h1>
+<div class='container theme-showcase'>
+  	<div class='jumbotron'>
+		<p>
+		  	<span>
+		  		Added by
+			 	<strong><%= link_to @forum_category.user.login, user_path(@forum_category.user) if @forum_category.user.present? %></strong>
+			  	about
+			 	<%= time_ago_in_words(@forum_category.created_at) %>
+			 	ago
+		 	</span>
+		</p>
+		<p>
+			<strong>Posts count:</strong> <%= @forum_category.forum_posts.count %>
+		</p>
+
+		<table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th>ID</th>
+		        <th>Title</th>
+		        <th>Author</th>
+		        <th>Created at</th>
+		        <th>Action</th>
+		      </tr>
+		    </thead>
+
+		    <tbody>
+		      <% @forum_posts.each do |forum_post| %>
+		        <tr>
+		          <td><%= forum_post.id %></td>
+		          <td><%= forum_post.title %></td>
+		          <td><%= forum_post.user.login %></td>
+		          <td><%= forum_post.created_at %></td>
+		          <td><%= link_to 'Show', forum_post, class: "label label-success", id: 'action-label' %></td>
+		        </tr>
+		      <% end %>
+		    </tbody>
+  		</table>
+  		<%= will_paginate @forum_posts, next_label: '»', previous_label: '«' %>
+		<%= link_to 'Edit', edit_forum_category_path(@forum_category), class: "label label-primary", id: 'action-label' %>
+		<%= link_to 'Back', forum_categories_path, class: "label label-warning", id: 'action-label' %>
+	</div>
+</div>
