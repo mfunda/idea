@@ -1,0 +1,19 @@
+<h4 class='page-header'>Reply to thread</h4>
+<%= form_for @reply, url: create_reply_path do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.cktext_area :content, :class => 'someclass', :ckeditor => {:language => 'pl', :height => '15rem'} %>
+  <br/>
+  <div class="actions">
+    <%= f.submit 'Add Reply', :class => "btn btn-default"  %>
+  </div>
+<% end %>

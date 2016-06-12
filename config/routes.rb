@@ -37,6 +37,13 @@ Rails.application.routes.draw do
   
   scope '/forum' do
     get '', to: 'forum#index', as: 'forum'
+    get '/topic/:id', to: 'forum#show', as: 'show_topic'
+    get '/category/:id', to: 'forum#show_forum_category', as: 'show_forum_category'
+    get '/categories', to: 'forum#forum_categories_list', as: 'forum_categories_list'
+    get '/topics/new', to: 'forum#new_topic', as: 'new_topic'
+    post '/topics', to: 'forum#create_topic', as: 'create_topic'
+    get '/topic/:id/replies/new', to: 'forum#new_reply', as: 'new_reply'
+    post '/topic/:id/replies', to: 'forum#create_reply', as: 'create_reply'
   end
   
   get '', to: 'home#index', as: 'home'

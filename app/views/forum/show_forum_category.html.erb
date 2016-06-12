@@ -1,13 +1,10 @@
 <div class='container'>
-	<h1 class="page-header">Forum<span style='float: right'><%= link_to 'New Topic', new_topic_path, class: "label label-info", id: 'action-label', style: 'font-size: 1.5rem'%></span></h1>
-	<div class="btn-group">
-	  <%= link_to 'All categories', '#', class: "label label-success", id: 'action-label', style: 'font-size: 1.5rem'%>
-	  <%= link_to 'Categories', forum_categories_list_path, class: "label label-danger", id: 'action-label', style: 'font-size: 1.5rem'%>
-	</div>
-	<br/>
-	<br/>
+	<h1 class="page-header">Forum<span style='float: right'><%= link_to 'New Topic', new_forum_post_path, class: "label label-info", id: 'action-label', style: 'font-size: 1.5rem'%></span></h1>
+
+<div class="field">
+  </div>
 	<div class="table-responsive">
-	  <table class="table table-striped" id='table-left'>
+	  <table class="table table-striped">
 	    <thead>
 	      <tr>
 	        <th>Topic</th>
@@ -23,7 +20,7 @@
 	      <% @posts.each do |forum_post| %>
 	        <tr>
 	          <td class='forum-topics'><%= link_to forum_post.title, show_topic_path(forum_post) %></td>
-	          <td class='forum-topics'><%= link_to forum_post.forum_category.name, show_forum_category_path(forum_post.forum_category) %></td>
+	          <td class='forum-topics'><%= forum_post.forum_category.name %></td>
 	          <td class='forum-topics'><%= link_to (image_tag forum_post.user.avatar.url(:thumb), id: 'forum-post-users', title: forum_post.user.login), show_user_profile_path(forum_post.user) %></td>
 	          <td class='forum-topics'><%= forum_post.forum_replies.count %></td>
 	          <% if forum_post.forum_replies.present? %>

@@ -1,0 +1,53 @@
+<div class='container'>
+	<h1 class="page-header"><%= @post.title %><span style='float: right'><%= link_to 'Back', forum_path, class: "label label-warning", id: 'action-label', style: 'font-size: 1.5rem' %></span><p><strong><%= link_to @post.forum_category.name, show_forum_category_path(@post.forum_category) %></strong></p></h1>
+	<div class='container theme-showcase'>
+		<div class='forum-post'>
+			<div class='row'>
+				<div class='col-md-1'>
+					<%= image_tag @post.user.avatar.url(:thumb), class: 'media-object'%>
+				</div>
+				<div class='col-md-11'>
+					<span class='reply-user'><strong><%= link_to @post.user.login, user_path(@post.user) %></strong></span>
+					<span class='reply-time'><%= time_ago_in_words(@post.created_at) %> ago</span>
+					<div class='reply-text'>
+						<%= raw @post.content %>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-md-8 col-md-offset-2' id='forum-post-summary'>
+					<div class='col-md-3'>
+						<p>created</p>
+						<%= link_to (image_tag @post.user.avatar.url(:thumb)), user_path(@post.user), title: @post.user.login %>
+						<p><%= time_ago_in_words(@post.created_at) %></p>
+					</div>
+					<div class='col-md-3'>
+						<p>last reply</p>
+						<% if @post.forum_replies.present? %>
+							<%= link_to (image_tag @post.forum_replies.last.user.avatar.url(:thumb)), user_path(@post.forum_replies.last.user), title: @post.user.login %>
+							<p><%= time_ago_in_words(@post.forum_replies.last.created_at) %></p>
+						<% else %>
+							<p id='replies-numbers'>no replies</p>
+						<% end %>
+					</div>
+					<div class='col-md-3'>
+						<p id='replies-numbers'><%= @post.forum_replies.count %></p>
+						<p>replies</p>
+					</div>
+					<div class='col-md-3'>
+						<p id='replies-numbers'><%= @post.forum_replies.count %></p>
+						<p>views</p>
+					</div>
+				</div>
+			</div>				
+		</div>
+		<%= render 'forum_replies/replies' %>
+		<% if user_signed_in? %>
+		<div class='reply-to-thread'>
+			<%= render 'form_reply' %>
+		</div>
+		<% else %>
+			<%= link_to 'Reply to thread', new_reply_path, class: "label label-info", id: 'action-label', style: 'margin-top: 3rem; float: left; font-size: 1.5rem' %>
+		<% end %>
+	</div>
+</div>

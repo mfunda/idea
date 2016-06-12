@@ -1,0 +1,34 @@
+<div class='container'>
+	<h1 class="page-header">Forum<span style='float: right'><%= link_to 'New Topic', new_topic_path, class: "label label-info", id: 'action-label', style: 'font-size: 1.5rem'%></span></h1>
+	<div class="btn-group">
+	  <%= link_to 'All categories', forum_path, class: "label label-success", id: 'action-label', style: 'font-size: 1.5rem'%>
+	  <%= link_to 'Categories', forum_categories_list_path, class: "label label-danger", id: 'action-label', style: 'font-size: 1.5rem'%>
+	</div>
+	<br/><br/>
+	<div class="table-responsive">
+	  <table class="table table-striped" id='table-left'>
+	    <thead>
+	      <tr>
+	        <th>Category</th>
+	        <th>Lastest</th>
+	        <th>Topics</th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	      <% @categories.each do |category| %>
+	        <tr>
+	          <td class='forum-topics'><%= link_to category.name, show_forum_category_path(category) %></td>
+	          <td class='forum-topics'>
+	          	<% category.forum_posts.last(3).each do |post| %>
+	          		<p align='left'><%= link_to post.title, show_topic_path(post) %></p>
+	          	<% end %>
+	          </td>
+	          <td class='forum-topics'><%= category.forum_posts.count %></td>
+	        </tr>
+	      <% end %>
+	    </tbody>
+	  </table>
+	<%= will_paginate @categories, next_label: '»', previous_label: '«' %>
+	</div>
+</div>
