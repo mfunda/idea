@@ -7,7 +7,7 @@
 					<%= image_tag @post.user.avatar.url(:thumb), class: 'media-object'%>
 				</div>
 				<div class='col-md-11'>
-					<span class='reply-user'><strong><%= link_to @post.user.login, user_path(@post.user) %></strong></span>
+					<span class='reply-user'><strong><%= link_to @post.user.login, show_user_profile_path(@post.user) %></strong></span>
 					<span class='reply-time'><%= time_ago_in_words(@post.created_at) %> ago</span>
 					<div class='reply-text'>
 						<%= raw @post.content %>
@@ -18,13 +18,13 @@
 				<div class='col-md-8 col-md-offset-2' id='forum-post-summary'>
 					<div class='col-md-3'>
 						<p>created</p>
-						<%= link_to (image_tag @post.user.avatar.url(:thumb)), user_path(@post.user), title: @post.user.login %>
+						<%= link_to (image_tag @post.user.avatar.url(:thumb), id: 'forum-post-users', title: @post.user.login), show_user_profile_path(@post.user) %>
 						<p><%= time_ago_in_words(@post.created_at) %></p>
 					</div>
 					<div class='col-md-3'>
 						<p>last reply</p>
 						<% if @post.forum_replies.present? %>
-							<%= link_to (image_tag @post.forum_replies.last.user.avatar.url(:thumb)), user_path(@post.forum_replies.last.user), title: @post.user.login %>
+							<%= link_to (image_tag @post.forum_replies.last.user.avatar.url(:thumb)), show_user_profile_path(@post.forum_replies.last.user), title: @post.user.login %>
 							<p><%= time_ago_in_words(@post.forum_replies.last.created_at) %></p>
 						<% else %>
 							<p id='replies-numbers'>no replies</p>
