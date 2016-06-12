@@ -11,6 +11,7 @@
 	    <div class="container-fluid">
 	    	<div id="navbar" class="navbar-collapse collapse">
 	        	<ul class="nav navbar-nav navbar-right">
+	        			<li><%= link_to 'Forum', forum_path %></li>
 					<% if user_signed_in? %>
 						<li><%= link_to 'Home', home_path %></li>
 						<li><%= link_to 'Admin Dashboard', admin_root_path if current_user.is_a?(Admin) %></li>

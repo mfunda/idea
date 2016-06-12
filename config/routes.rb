@@ -34,7 +34,11 @@ Rails.application.routes.draw do
     end
     resources :messages, only: [:new, :create]
   end
-
+  
+  scope '/forum' do
+    get '', to: 'forum#index', as: 'forum'
+  end
+  
   get '', to: 'home#index', as: 'home'
   get '/post/:id', to: 'home#show_post', as: 'show_post'
   get '/:id', to: 'home#show_page', as: 'show_page'
