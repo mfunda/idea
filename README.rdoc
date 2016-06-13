@@ -1,5 +1,5 @@
 Demo version:
 http://mateuszfundakowski.herokuapp.com
 
-<p>email: demo@test.com</p>
-<p>password: demo12345</p>
+email: demo@test.com \n
+password: demo12345
